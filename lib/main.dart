@@ -40,8 +40,8 @@ class MyInboxState extends State{
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
-          title: Text("SMS Inbox"),
-          backgroundColor: Colors.pink,
+          title: Text("Your Messages"),
+          backgroundColor: Colors.lightBlueAccent,
         ),
         body: FutureBuilder(
           future: fetchSMS() ,
@@ -56,7 +56,7 @@ class MyInboxState extends State{
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
-                      leading: Icon(Icons.markunread,color: Colors.pink,),
+                      leading: Icon(Icons.markunread,color: Colors.lightBlueAccent,),
                       title: Text(messages[index].address),
                       subtitle: Text(messages[index].body,maxLines:2,style: TextStyle(),),
                     ),
