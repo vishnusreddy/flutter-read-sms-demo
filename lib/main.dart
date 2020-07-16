@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Messaging App',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
@@ -62,6 +62,13 @@ class MyInboxState extends State{
                         fontSize: 20.0,
                       ),),
                       subtitle: Text(messages[index].body,maxLines:2,style: TextStyle(color: Colors.black),),
+                    onTap: (){
+                        //This should display that message
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondRoute(text:messages[index].body)),
+                      );
+                    },
                     ),
                   );
                 });
@@ -72,5 +79,26 @@ class MyInboxState extends State{
   fetchSMS()
   async {
     messages = await query.getAllSms;
+  }
+}
+class SecondRoute extends StatelessWidget {
+  final String text;
+
+  // receive data from the FirstScreen as a parameter
+  SecondRoute({Key key, @required this.text}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Full Message"),
+        backgroundColor: Colors.lightBlueAccent,
+
+      ),
+      body: Center(
+        child: Text(
+          text,style:TextStyle(color: Colors.black, fontSize: 20),
+        ),
+      ),
+    );
   }
 }
