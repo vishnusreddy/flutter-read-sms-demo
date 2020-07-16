@@ -44,6 +44,24 @@ class FirstScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               SizedBox(height: 40),
+
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => Message()));
+                },
+                color: Colors.deepPurple,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'View Messages',
+                    style: TextStyle(fontSize: 25, color: Colors.white),
+                  ),
+                ),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
+              ),/*
+              //This is for the sign up button.
               RaisedButton(
                 onPressed: () {
                   signOutGoogle();
@@ -60,23 +78,8 @@ class FirstScreen extends StatelessWidget {
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => Message()));
-                },
-                color: Colors.deepPurple,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'View Messages',
-                    style: TextStyle(fontSize: 25, color: Colors.white),
-                  ),
-                ),
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40)),
-              )
+              ),*/
+
             ],
           ),
         ),
@@ -84,3 +87,4 @@ class FirstScreen extends StatelessWidget {
     );
   }
 }
+

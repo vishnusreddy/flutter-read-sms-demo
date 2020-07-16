@@ -3,6 +3,7 @@ import 'package:sms/sms.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'login_page.dart';
+import 'sign_in.dart';
 
 void main() => runApp(MyApp());
 
@@ -59,8 +60,19 @@ class MyInboxState extends State{
         appBar: AppBar(
           title: Text("Messages"),
           backgroundColor: Colors.lightBlueAccent,
+            actions: <Widget>[
+        // action button
+        IconButton(
+        icon: Icon(Icons.account_circle),
+      onPressed: () {
+        signOutGoogle();
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) {return LoginPage();}), ModalRoute.withName('/'));
+
+      },
+    ),]
         ),
         body: FutureBuilder(
+
           future: fetchSMS() ,
           builder: (context, snapshot)  {
 

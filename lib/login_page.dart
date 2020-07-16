@@ -11,7 +11,14 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.blue[100], Colors.blue[400]],
+          ),
+        ),
+
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -43,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
+      borderSide: BorderSide(color: Colors.white),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
@@ -57,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Sign in with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey,
+                  color: Colors.white,
                 ),
               ),
             )
