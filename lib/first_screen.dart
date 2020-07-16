@@ -1,4 +1,4 @@
-
+import 'main.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'sign_in.dart';
@@ -29,7 +29,7 @@ class FirstScreen extends StatelessWidget {
               ),
               SizedBox(height: 40),
               Text(
-                'NAME',
+                'Welcome',
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
@@ -43,20 +43,6 @@ class FirstScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
-              Text(
-                'EMAIL',
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black54),
-              ),
-              Text(
-                email,
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.deepPurple,
-                    fontWeight: FontWeight.bold),
-              ),
               SizedBox(height: 40),
               RaisedButton(
                 onPressed: () {
@@ -68,6 +54,22 @@ class FirstScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Sign Out',
+                    style: TextStyle(fontSize: 25, color: Colors.white),
+                  ),
+                ),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => Message()));
+                },
+                color: Colors.deepPurple,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'View Messages',
                     style: TextStyle(fontSize: 25, color: Colors.white),
                   ),
                 ),
