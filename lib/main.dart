@@ -40,7 +40,7 @@ class MyInboxState extends State{
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
-          title: Text("Your Messages"),
+          title: Text("Messages"),
           backgroundColor: Colors.lightBlueAccent,
         ),
         body: FutureBuilder(
@@ -49,16 +49,19 @@ class MyInboxState extends State{
 
             return ListView.separated(
                 separatorBuilder: (context, index) => Divider(
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 itemCount: messages.length,
                 itemBuilder: (context,index){
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
-                      leading: Icon(Icons.markunread,color: Colors.lightBlueAccent,),
-                      title: Text(messages[index].address),
-                      subtitle: Text(messages[index].body,maxLines:2,style: TextStyle(),),
+                      leading: Icon(Icons.message,color: Colors.lightBlueAccent,size: 45.0,),
+                      title: Text(messages[index].address,style: TextStyle(
+                        color: Colors.blue[900],
+                        fontSize: 20.0,
+                      ),),
+                      subtitle: Text(messages[index].body,maxLines:2,style: TextStyle(color: Colors.black),),
                     ),
                   );
                 });
