@@ -92,7 +92,7 @@ class MyInboxState extends State {
                       leading: Icon(
                         Icons.account_circle,
                         color: Colors.lightBlueAccent,
-                        size: 45.0,
+                        size: 60.0,
                       ),
                       title:
                       FutureBuilder(
@@ -172,7 +172,7 @@ class SecondRoute extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          "FROM:"+"\n"+message.address+"\n\nAT:"+"\n"+DateFormat('h:mm a').format(message.date)+"\n"+"\n"+message.body+"\n"+"\n",
+          "FROM:"+"\n"+message.address+"\n\nAT:"+"\n"+DateFormat('EEE, MMM d,h:mm a').format(message.date)+"\n"+"\n"+message.body+"\n"+"\n",
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
       ),
