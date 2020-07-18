@@ -1,8 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sms/contact.dart';
 import 'package:sms/sms.dart';
 import 'package:super_sms/first_screen.dart';
 import 'login_page.dart';
-import 'sign_in.dart';
+import 'package:intl/intl.dart';
+//import 'package:contacts_service/contacts_service.dart';
+//import 'package:sms/contact.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,6 +49,8 @@ class MyInbox extends StatefulWidget {
 class MyInboxState extends State {
   SmsQuery query = new SmsQuery();
   List messages = new List();
+  ContactQuery contacts = new ContactQuery();
+  String cname;
   @override
   initState() {
     // TODO: implement initState
@@ -52,7 +58,7 @@ class MyInboxState extends State {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
@@ -88,18 +94,32 @@ class MyInboxState extends State {
                         color: Colors.lightBlueAccent,
                         size: 45.0,
                       ),
-                      title: Text(
+                      title:
+                      FutureBuilder(
+                        future:name(messages[index].address),
+                        builder: (context,snapshot){
+                          return Text(
+                            cname
+                          );
+                        },
+                      ),/*
+                      Text(
                         messages[index].address,
                         style: TextStyle(
                           color: Colors.blue[400],
                           fontSize: 20.0,
                         ),
-                      ),
+                      ),*/
                       subtitle: Text(
                         messages[index].body,
                         maxLines: 2,
-                        style: TextStyle(color: Colors.black,
-                        fontSize: 15),
+                        style: TextStyle(color: Colors.black, fontSize: 15),
+                      ),
+                      trailing: Text(
+                        DateFormat('h:mm a').format(messages[index].date),
+                        //messages[index].body,
+                        maxLines: 2,
+                        style: TextStyle(color: Colors.black, fontSize: 15),
                       ),
                       onTap: () {
                         //This should display that message
@@ -117,6 +137,16 @@ class MyInboxState extends State {
         ));
   }
 
+  name(address) async {
+    Contact contact = await contacts.queryContact(address);
+    if (contact.fullName != null) {
+      cname = contact.fullName;
+
+    } else {
+      cname = address;
+    }
+  }
+
   fetchSMS() async {
     messages = await query.getAllSms;
   }
@@ -130,16 +160,16 @@ class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          appBar: AppBar(
-            title: Text("Full Message"),
-            backgroundColor: Colors.lightBlueAccent,
-          ),
-          body: Center(
-            child: Text(
-              text,
-              style: TextStyle(color: Colors.black, fontSize: 20),
-            ),
-          ),
-        );
+      appBar: AppBar(
+        title: Text("Full Message"),
+        backgroundColor: Colors.lightBlueAccent,
+      ),
+      body: Center(
+        child: Text(
+          text,
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+      ),
+    );
   }
 }

@@ -25,6 +25,9 @@ dependencies:
     sdk: flutter
   firebase_auth: ^0.15.4
   google_sign_in: ^4.4.4
+  contacts_service: ^0.4.6
+  sms: ^0.2.0
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -35,6 +38,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   sms: ^0.2.4
+  intl: 0.15.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
