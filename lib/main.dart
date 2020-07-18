@@ -100,7 +100,10 @@ class MyInboxState extends State {
                         name(messages[index].address),
                         builder: (context,snapshot){
                           return Text(
-                            cname[index]
+                            cname[index],style: TextStyle(
+                            color: Colors.blue[400],
+                            fontSize: 20.0,
+                          ),
                           );
                         },
                       ),/*
@@ -149,19 +152,9 @@ class MyInboxState extends State {
     }
   }
 
-  fetchNames() {
-    /*
-    for(var i=0; i<91; i++)
-    {
-      print(i);
-      cname[i]=name(messages[i].address);
-    }*/
-  }
-
 
   fetchSMS() async {
     messages = await query.getAllSms;
-    //fetchNames();
   }
 }
 
