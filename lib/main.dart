@@ -132,7 +132,7 @@ class MyInboxState extends State {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  SecondRoute(text: messages[index].body)),
+                                  SecondRoute(message: messages[index])),
                         );
                       },
                     ),
@@ -159,10 +159,10 @@ class MyInboxState extends State {
 }
 
 class SecondRoute extends StatelessWidget {
-  final String text;
+  final SmsMessage message;
 
   // receive data from the FirstScreen as a parameter
-  SecondRoute({Key key, @required this.text}) : super(key: key);
+  SecondRoute({Key key, @required this.message}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,7 +172,7 @@ class SecondRoute extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          text,
+          "FROM:"+"\n"+message.address+"\n\nAT:"+"\n"+DateFormat('h:mm a').format(message.date)+"\n"+"\n"+message.body+"\n"+"\n",
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
       ),
