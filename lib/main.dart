@@ -50,7 +50,7 @@ class MyInboxState extends State {
   SmsQuery query = new SmsQuery();
   List messages = new List();
   ContactQuery contacts = new ContactQuery();
-  String cname;
+  List<String> cname = new List();
   @override
   initState() {
     // TODO: implement initState
@@ -96,14 +96,16 @@ class MyInboxState extends State {
                       ),
                       title:
                       FutureBuilder(
-                        future:name(messages[index].address),
+                        future:
+                        name(messages[index].address),
                         builder: (context,snapshot){
                           return Text(
-                            cname
+                            cname[index]
                           );
                         },
                       ),/*
                       Text(
+                        //cname[index],
                         messages[index].address,
                         style: TextStyle(
                           color: Colors.blue[400],
@@ -140,15 +142,26 @@ class MyInboxState extends State {
   name(address) async {
     Contact contact = await contacts.queryContact(address);
     if (contact.fullName != null) {
-      cname = contact.fullName;
+      cname.add(contact.fullName);
 
     } else {
-      cname = address;
+      cname.add(address);
     }
   }
 
+  fetchNames() {
+    /*
+    for(var i=0; i<91; i++)
+    {
+      print(i);
+      cname[i]=name(messages[i].address);
+    }*/
+  }
+
+
   fetchSMS() async {
     messages = await query.getAllSms;
+    //fetchNames();
   }
 }
 
