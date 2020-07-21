@@ -27,6 +27,7 @@ dependencies:
   google_sign_in: ^4.4.4
   contacts_service: ^0.4.6
   sms: ^0.2.0
+  neumorphic: any
 
 
 

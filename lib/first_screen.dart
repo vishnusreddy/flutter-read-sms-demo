@@ -1,3 +1,5 @@
+import 'package:neumorphic/neumorphic.dart';
+
 import 'main.dart';
 import 'package:flutter/material.dart';
 import 'sign_in.dart';
@@ -53,12 +55,12 @@ class FirstScreen extends StatelessWidget {
               SizedBox(height: 20),
               SizedBox(height: 40),
 
-              RaisedButton(
+              NeuButton(
 
                 onPressed: () {
                   Navigator.push(context,MaterialPageRoute(builder: (context) => Message()));
                 },
-                color: Colors.white,
+                //color: Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -66,9 +68,9 @@ class FirstScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 25, color: Colors.blue),
                   ),
                 ),
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40)),
+                //elevation: 5,
+                //shape: RoundedRectangleBorder(
+                  //  borderRadius: BorderRadius.circular(40)),
               ),
               //This is for the sign up button.
               RaisedButton(
